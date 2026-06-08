@@ -1,15 +1,18 @@
-# StellarX Workshop Starter
+# TingiFi
 
-A ready-to-run scaffold for the **StellarX PH workshop @ PUP QC**. It gives you a
-working Stellar app on **testnet** so you can spend the workshop bending it toward
-your own idea instead of fighting setup.
+TingiFi is a demo-ready Stellar MVP for community-funded sari-sari store loans.
+Store owners request short-term **USDC** financing, lenders fund the request on
+Stellar testnet, and repayments flow back in small daily amounts that are easy to
+explain in a live demo.
 
-It covers **both** workshop tracks:
+The workspace includes:
 
-- **Fullstack payments** — a Next.js app: connect Freighter → fund via Friendbot →
-  view XLM/USDC balances → send a payment → confirm on-chain.
-- **Soroban smart contract** — a small Rust contract (a *Savings Goal* tracker)
-  you build, test, deploy with the Stellar CLI, and call from the same frontend.
+- A **Next.js + Tailwind** frontend in `web/` with landing, store-owner, lender,
+  marketplace, and loan detail pages.
+- A **Soroban loan ledger** in `contracts/savings-goal/` that records create,
+  fund, repay, and close lifecycle events.
+- Stellar testnet helpers for Freighter, Friendbot, balances, trustlines, and
+  USDC payments.
 
 ```
 .
@@ -114,11 +117,10 @@ demo. To make it move real money, swap `contribute` to call the XLM/USDC SAC
 
 ## 3. Make it your idea
 
-This is your *starting point*, not the answer. Pick an idea + track from the
-workshop's 300-ideas list (Philippines remittance / payments / financial
-inclusion themes score well), then reshape the components and the contract.
-Good extension paths: transaction history from Horizon, USDC trustline + send,
-a swap via Soroswap, a price feed via Reflector.
+This build is intentionally simple so it can be demoed without extra infrastructure.
+If you want to extend it, the natural next steps are a real Express + PostgreSQL
+backend, Soroban contract wiring for the lifecycle buttons, and production wallet
+support beyond Freighter.
 
 For a fully worked example built on this scaffold, see the **Paluwagan** app in
 `..\Stellar-Workshop-PUP-May-2026-EXAMPLE`.

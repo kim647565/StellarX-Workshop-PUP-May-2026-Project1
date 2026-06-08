@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import {
   buildPaymentXDR,
@@ -8,21 +9,14 @@ import {
 } from '@/lib/payment';
 import { NETWORK_PASSPHRASE } from '@/lib/stellar';
 
-type Status =
-  | 'idle'
-  | 'building'
-  | 'signing'
-  | 'submitting'
-  | 'polling'
-  | 'success'
-  | 'error';
+type Status = 'idle' | 'building' | 'signing' | 'submitting' | 'polling' | 'success' | 'error';
 
 const STATUS_LABEL: Record<Status, string> = {
   idle: 'Send',
-  building: 'Building transaction…',
-  signing: 'Waiting for Freighter…',
-  submitting: 'Submitting…',
-  polling: 'Confirming on-chain…',
+  building: 'Building transaction...',
+  signing: 'Waiting for Freighter...',
+  submitting: 'Submitting...',
+  polling: 'Confirming on-chain...',
   success: 'Send',
   error: 'Send',
 };
@@ -94,12 +88,10 @@ export default function SendPayment({
         </div>
 
         <div>
-          <label className="mb-1 block text-sm text-gray-600">
-            Destination address
-          </label>
+          <label className="mb-1 block text-sm text-gray-600">Destination address</label>
           <input
             type="text"
-            placeholder="G… (must be an existing funded testnet account)"
+            placeholder="G... (must be an existing funded testnet account)"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             className="w-full rounded border border-gray-300 px-3 py-2 font-mono text-sm text-gray-900"
@@ -135,7 +127,7 @@ export default function SendPayment({
             rel="noopener noreferrer"
             className="break-all text-sm text-indigo-600 hover:underline"
           >
-            View on Stellar Expert →
+            View on Stellar Expert
           </a>
         </div>
       )}

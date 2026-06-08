@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import type { WalletState } from '@/hooks/useWallet';
 
@@ -20,17 +21,17 @@ export default function ConnectWallet({
 
   if (publicKey) {
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <button
           onClick={copy}
           title="Copy full address"
-          className="rounded bg-gray-100 px-3 py-1 font-mono text-sm text-gray-700 transition-colors hover:bg-gray-200"
+          className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 font-mono text-sm text-slate-100 transition-colors hover:bg-white/10"
         >
-          {copied ? 'Copied!' : `${publicKey.slice(0, 6)}…${publicKey.slice(-6)}`}
+          {copied ? 'Copied!' : `${publicKey.slice(0, 6)}...${publicKey.slice(-6)}`}
         </button>
         <button
           onClick={disconnect}
-          className="text-sm text-red-500 hover:underline"
+          className="rounded-xl border border-rose-300/20 px-3 py-2 text-sm text-rose-100 transition hover:bg-rose-300/10"
         >
           Disconnect
         </button>
@@ -39,15 +40,15 @@ export default function ConnectWallet({
   }
 
   return (
-    <div className="text-right">
+    <div>
       <button
         onClick={connect}
         disabled={connecting}
-        className="rounded bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700 disabled:opacity-50"
+        className="w-full rounded-xl bg-amber-300 px-4 py-3 font-semibold text-slate-950 transition-colors hover:bg-amber-200 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {connecting ? 'Connecting…' : 'Connect Freighter'}
+        {connecting ? 'Connecting...' : 'Connect Freighter'}
       </button>
-      {error && <p className="mt-2 max-w-xs text-sm text-red-500">{error}</p>}
+      {error && <p className="mt-2 max-w-xs text-sm text-rose-200">{error}</p>}
     </div>
   );
 }

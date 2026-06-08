@@ -1,20 +1,22 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Bricolage_Grotesque, IBM_Plex_Mono } from 'next/font/google';
+import { WalletProvider } from '@/hooks/useWallet';
+import './globals.css';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const displayFont = Bricolage_Grotesque({
+  variable: '--font-display',
+  subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const monoFont = IBM_Plex_Mono({
+  variable: '--font-tingifi-mono',
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
 });
 
 export const metadata: Metadata = {
-  title: "StellarX Starter — PUP Workshop",
-  description: "Wallet, payments, and a Soroban contract on Stellar testnet.",
+  title: 'TingiFi | Stellar micro-loans for sari-sari stores',
+  description: 'Community-funded USDC loans on Stellar testnet for sari-sari store inventory financing.',
 };
 
 export default function RootLayout({
@@ -25,9 +27,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${displayFont.variable} ${monoFont.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <WalletProvider>{children}</WalletProvider>
+      </body>
     </html>
   );
 }

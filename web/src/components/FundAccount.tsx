@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { fundTestnetAccount } from '@/lib/stellar';
 
@@ -30,11 +31,11 @@ export default function FundAccount({
       <button
         onClick={fund}
         disabled={loading}
-        className="rounded bg-amber-400 px-3 py-1.5 text-sm font-medium text-amber-950 transition-colors hover:bg-amber-500 disabled:opacity-50"
+        className="w-full rounded-xl border border-amber-300/30 bg-amber-300/15 px-3 py-2.5 text-sm font-medium text-amber-50 transition-colors hover:bg-amber-300/25 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {loading ? 'Funding…' : 'Fund with Friendbot (testnet)'}
+        {loading ? 'Funding...' : 'Fund with Friendbot (testnet)'}
       </button>
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+      {error && <p className="mt-1 text-sm text-rose-200">{error}</p>}
     </div>
   );
 }
